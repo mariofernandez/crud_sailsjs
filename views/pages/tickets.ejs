@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row justify-content-center pt-4">
+        <div class="col-12 text-center display-4">
+            Tickets
+        </div>
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="row">
+                        <div class="form-group col-xl-4">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" placeholder="">
+                        </div>
+                        <div class="form-group col-xl-12">
+                            <label for="description">Descripción</label>
+                            <textarea class="form-control" id="description" rows="3"></textarea>
+                        </div>
+                        <input type="hidden" id="id_" value="">
+                        <div class="col-12 text-right">
+                            <button onclick="Empty();" class="btn btn-warning">Limpiar</button>
+                            <button onclick="UpdateCreate();" class="btn btn-success">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 pt-4">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% _.each(tickets, function (ticket) { %>
+                    <tr>
+                        <th scope="row"><%= ticket.id %></th>
+                        <td><%= ticket.name %></td>
+                        <td><%= ticket.description %></td>
+                        <td>
+                            <button onclick="LoadDetail(<%= ticket.id %>)" class="btn btn-info">Editar</button>
+                            <button onclick="Delete(<%= ticket.id %>)" class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
